@@ -1,5 +1,8 @@
+import 'package:flutter/services.dart';
+
 class AgoraRtmMessage {
   String text;
+  int type;
   int ts;
   bool offline;
 
@@ -10,13 +13,14 @@ class AgoraRtmMessage {
   AgoraRtmMessage.fromJson(Map<dynamic, dynamic> json)
       : text = json['text'],
         ts = json['ts'],
+        type = json['type'],
         offline = json['offline'];
 
-  Map<String, dynamic> toJson() => {'text': text, 'ts': ts, 'offline': offline};
+  Map<String, dynamic> toJson() => {'text': text, 'ts': ts, 'offline': offline,"type":type};
 
   @override
   String toString() {
-    return "{text: $text, ts: $ts, offline: $offline}";
+    return "{text: $text, ts: $ts, offline: $offline , type: $type}";
   }
 }
 

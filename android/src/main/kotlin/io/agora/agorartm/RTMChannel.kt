@@ -52,7 +52,8 @@ class RTMChannel : RtmChannelListener, EventChannel.StreamHandler {
                 "userId" to member.userId,
                 "channelId" to member.channelId,
                 "message" to hashMapOf(
-                        "text" to message.text,
+                        "text" to (if (message.rawMessage.isNotEmpty() && message.text.isEmpty())  String(message.rawMessage) else message.text),
+                        "type" to message.messageType,
                         "offline" to message.isOfflineMessage,
                         "ts" to message.serverReceivedTs
                 )
